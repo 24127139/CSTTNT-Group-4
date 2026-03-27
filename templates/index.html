@@ -2,12 +2,42 @@
 <html>
 <head>
     <title>Flask Example</title>
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/script.js') }}" defer></script>
 </head>
 <body>
-
-<h1>Number from Python:</h1>
-
-<p>{{ num }}</p>
+    <div class = "eightslots">
+        <div class = "freecell">       
+            <div class = "slot"></div>
+            <div class = "slot"></div>
+            <div class = "slot"></div>
+            <div class = "slot"></div>
+        </div>
+        <div class = "foundationcell">
+            <div class = "slot" id = "S" data-value = 0 style="background-image: url('{{ url_for('static', filename='images/spade.png') }}')"></div>
+            <div class = "slot" id = "H" data-value = 0 style="background-image: url('{{ url_for('static', filename='images/heart.png') }}')"></div>
+            <div class = "slot" id = "D" data-value = 0 style="background-image: url('{{ url_for('static', filename='images/diamond.png') }}')"></div>
+            <div class = "slot" id = "C" data-value = 0 style="background-image: url('{{ url_for('static', filename='images/club.png') }}')"></div>
+        </div>
+        <div class = "board">
+            {% for column in board %}
+            <div class = "column">
+                {% for card in column %}
+                <div class = "card" style="background-image: url('{{ url_for('static', filename='images/' ~ card ~ '.png') }}')" data-suit = {{card[1]}} data-rank = {{card[0]}}></div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+        <div class = "menu">
+            <button id = "newgame">New Game</button>
+            <button id = "restart">Restart</button>
+            <button id = "BFS">BFS Solver</button>
+            <button id = "DFS">DFS Solver</button>
+            <button id = "UCS">UCS Solver</button>
+            <button id = "A*">A* Solver</button>
+        </div>
+    </div>
 
 </body>
 </html>

@@ -1,0 +1,77 @@
+body {
+    background-color: green;
+}
+.eightslots {
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    row-gap: 20px;
+    grid-template-areas:
+        "freecell freecell freecell freecell foundationcell foundationcell foundationcell foundationcell menu menu"
+        "board    board    board    board    board          board          board          board          menu menu";
+}
+.menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    grid-area: menu;
+}
+button {
+    width: 20vh;
+    height: 8vh;
+}
+.freecell {
+    display: flex;
+    grid-area: freecell;
+    gap: 10px;
+}
+.foundationcell {
+    display: flex;
+    grid-area: foundationcell;
+    flex-direction: row-reverse;
+    gap: 10px;
+}
+.slot {
+    position: relative;
+    width: 15vh;
+    aspect-ratio: 5/ 7;
+    border: 1px solid black;
+    border-color: white;
+    border-radius: 5px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.board {
+    display: flex;
+    grid-area: board;
+    justify-content: center;
+    gap: 10px;
+}
+.column {
+    width: 15vh;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+}
+.card {
+    position: absolute;
+    width: 15vh;
+    aspect-ratio: 5/ 7;
+    background-size: 100% 100%;
+    cursor: grab;
+    user-select: none;
+}
+.column .card:nth-child(1){ top:0px; }
+.column .card:nth-child(2){ top:50px; }
+.column .card:nth-child(3){ top:100px; }
+.column .card:nth-child(4){ top:150px; }
+.column .card:nth-child(5){ top:200px; }
+.column .card:nth-child(6){ top:250px; }
+.column .card:nth-child(7){ top:300px; }
+.column .card:nth-child(8){ top:350px; }
